@@ -1,0 +1,33 @@
+syntax = "v1"
+
+type (
+    GenerateQrcodeReq {}
+    GenerateQrcodeResp {
+        Qrcode       string  `json:"qrCode"`
+        T     int64 `json:"t"`
+        Ck    string `json:"ck"`
+    }
+
+    QrcodeStateReq{
+        T     int64 `json:"t"`
+        Ck    string `json:"ck"`
+    }
+    QrcodeStateResp{
+        UserName     string `json:"userName"`
+        UserID       string `json:"userId"`
+        TokenType    string `json:"tokenType"`
+        RefreshToken string `json:"refreshToken"`
+    }
+)
+
+@server (
+    prefix: /auth
+    group: auth
+)
+service auth {
+    @handler GenerateQrcode
+    get /generate_qrcode (GenerateQrcodeReq) returns (GenerateQrcodeResp)
+    @handler QrcodeState
+    get /qrcode_state (QrcodeStateReq) returns (QrcodeStateResp)
+}
+
