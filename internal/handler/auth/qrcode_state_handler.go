@@ -23,7 +23,6 @@ func QrcodeStateHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
 			zeroMicroHttp.JsonBaseResponseCtx(r.Context(), w, errorx.NewCodeError(results.CodeTypeError, validateErr))
 			return
 		}
-
 		l := auth.NewQrcodeStateLogic(r.Context(), svcCtx)
 		resp, err := l.QrcodeState(&req)
 		if err != nil {

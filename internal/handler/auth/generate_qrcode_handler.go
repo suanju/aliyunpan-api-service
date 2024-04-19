@@ -23,7 +23,6 @@ func GenerateQrcodeHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
 			zeroMicroHttp.JsonBaseResponseCtx(r.Context(), w, errorx.NewCodeError(results.CodeTypeError, validateErr))
 			return
 		}
-
 		l := auth.NewGenerateQrcodeLogic(r.Context(), svcCtx)
 		resp, err := l.GenerateQrcode(&req)
 		if err != nil {
