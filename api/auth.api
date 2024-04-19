@@ -19,7 +19,7 @@ type (
         RefreshToken string `json:"refreshToken"`
     }
     GetAccessTokenFromRefreshTokenReq{
-        RefreshToken string  `json:"refreshToken"`
+        RefreshToken string   `json:"refreshToken"`
     }
     GetAccessTokenFromRefreshTokenResp{
         AccessTokenType string `json:"accessTokenType"`
