@@ -18,6 +18,16 @@ type (
         TokenType    string `json:"tokenType"`
         RefreshToken string `json:"refreshToken"`
     }
+    GetAccessTokenFromRefreshTokenReq{
+        RefreshToken string  `json:"refreshToken"`
+    }
+    GetAccessTokenFromRefreshTokenResp{
+        AccessTokenType string `json:"accessTokenType"`
+        AccessToken string `json:"accessToken"`
+        RefreshToken string `json:"refreshToken"`
+        ExpiresIn int `json:"expiresIn"`
+        ExpireTime string `json:"expireTime"`
+    }
 )
 
 @server (
@@ -29,5 +39,7 @@ service auth {
     get /generate_qrcode (GenerateQrcodeReq) returns (GenerateQrcodeResp)
     @handler QrcodeState
     get /qrcode_state (QrcodeStateReq) returns (QrcodeStateResp)
+    @handler GetAccessTokenFromRefreshToken
+    get /get_access_token_from_refresh_token (QrcodeStateReq) returns (QrcodeStateResp)
 }
 
